@@ -1,0 +1,26 @@
+# Terraform remote state backend.
+#
+# Copy this file to backend.tf and edit the bucket name (and optionally region/key)
+# to match your own S3 state bucket. The local backend.tf is gitignored so each
+# deployment keeps its own config.
+#
+# Prerequisite: create the S3 bucket before `terraform init`.
+#   aws s3api create-bucket --bucket your-terraform-state-bucket --region us-east-1
+#   aws s3api put-bucket-versioning --bucket your-terraform-state-bucket \
+#     --versioning-configuration Status=Enabled
+#   aws s3api put-bucket-encryption --bucket your-terraform-state-bucket \
+#     --server-side-encryption-configuration \
+#     '{"Rules":[{"ApplyServerSideEncryptionByDefault":{"SSEAlgorithm":"AES256"}}]}'
+#
+# Authentication: this file contains no profile. Set AWS_PROFILE in your shell,
+# or use any other AWS credential source Terraform supports.
+
+terraform {
+  backend "s3" {
+    bucket       = "your-terraform-state-bucket"
+    key          = "redcap/terraform.tfstate"
+    region       = "us-east-1"
+    use_lockfile = true
+    encrypt      = true
+  }
+}

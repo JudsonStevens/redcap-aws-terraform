@@ -1,0 +1,59 @@
+# AWS Configuration
+aws_region   = "us-east-1"
+environment  = "prod"
+project_name = "redcap"
+
+# EC2 Configuration
+ec2_key_name      = "my-redcap-key"     # Optional — empty string means Session Manager only
+web_instance_type = "t3.medium"
+web_asg_min       = 2
+web_asg_max       = 4
+php_version       = "8.1"
+
+# Network Configuration
+access_cidr = "0.0.0.0/0"                # Restrict this to your organization's IP ranges
+
+# Database Configuration
+database_instance_type   = "db.t3.small"
+database_master_password = "your-secure-password-here"   # 8–41 chars, strong password
+multi_az_database        = true
+# restore_snapshot_identifier = ""       # Optional: ARN or ID of an Aurora snapshot to restore
+
+# DNS and SSL Configuration
+use_route53      = true
+use_acm          = true
+hosted_zone_id   = "Z1234567890ABC"      # Your Route53 hosted zone ID
+hosted_zone_name = "example.com"         # Your domain name
+domain_name      = "redcap"              # Subdomain (will create redcap.example.com)
+
+# S3 Credentials (REDCap uses these to read/write uploaded files)
+amazon_s3_key    = "AKIAIOSFODNN7EXAMPLE"
+amazon_s3_secret = "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY"
+
+# Email Configuration (SendGrid SMTP relay)
+sendgrid_api_key = "SG.your-sendgrid-api-key"
+
+# REDCap Application Configuration
+redcap_download_method = "api"           # or "s3"
+
+# If using API method:
+redcap_community_username = "your-redcap-username"
+redcap_community_password = "your-redcap-password"
+redcap_version            = "latest"
+
+# If using S3 method (uncomment and fill in):
+# redcap_s3_bucket        = "my-redcap-source-bucket"
+# redcap_s3_key           = "redcap/redcap14.0.0.zip"
+# redcap_s3_bucket_region = "us-east-1"
+
+# Optional: Custom REDCap External Modules
+# Upload a zip (with a top-level modules/ directory) to the REDCap files S3 bucket,
+# then set the key here. Contents of modules/ are copied into /var/www/html/modules/
+# at each instance boot.
+# custom_modules_s3_key = "my-modules.zip"
+
+# Optional: Sentry error tracking
+# sentry_dsn = "https://xxx@xxx.ingest.sentry.io/xxx"
+
+# Optional: SNS email for infrastructure alerts
+# alert_email = "alerts@example.com"
