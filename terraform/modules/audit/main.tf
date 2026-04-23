@@ -1,9 +1,15 @@
-# HIPAA Audit Module — CloudTrail, GuardDuty, AWS Config
+# Audit module — CloudTrail, GuardDuty, AWS Config
 #
-# Provides the audit controls required by HIPAA Security Rule:
+# Enables AWS audit/detection services that support the HIPAA Security Rule
+# technical safeguards:
 #   - 164.312(b) Audit Controls — CloudTrail
 #   - 164.308(a)(1)(ii)(D) Information System Activity Review — GuardDuty
 #   - 164.306(a) Security Standards — AWS Config compliance rules
+#
+# Enabling these services supports but does not by itself satisfy HIPAA.
+# Compliance requires administrative, physical, and technical safeguards
+# as well as a BAA with AWS, ongoing review, and a compliance program
+# owned by the operator. See the root README for the full disclaimer.
 
 data "aws_caller_identity" "current" {}
 data "aws_region" "current" {}
@@ -423,7 +429,7 @@ resource "aws_iam_role_policy" "config_s3" {
 }
 
 # =============================================================================
-# Config Rules — HIPAA compliance checks
+# Config Rules — checks aligned with HIPAA Security Rule safeguards
 # =============================================================================
 
 resource "aws_config_config_rule" "encrypted_volumes" {

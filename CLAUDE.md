@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 This repository contains Terraform Infrastructure as Code for deploying REDCap (Research Electronic Data Capture) on AWS. REDCap runs on EC2 behind an Application Load Balancer, backed by Aurora MySQL and S3.
 
-The infrastructure is designed with HIPAA controls in mind: encryption at rest and in transit, VPC isolation, CloudTrail, GuardDuty, AWS Config, WAF, and long-term log archival.
+The infrastructure includes AWS controls commonly used in HIPAA-aligned environments: encryption at rest and in transit, VPC isolation, CloudTrail, GuardDuty, AWS Config, WAF, and long-term log archival. **Deploying this Terraform does not make an organization HIPAA compliant** — that's the operator's responsibility (BAA with AWS, administrative/physical/technical safeguards, risk analysis, ongoing audit). See the root README's HIPAA disclaimer for details.
 
 ## Common Commands
 

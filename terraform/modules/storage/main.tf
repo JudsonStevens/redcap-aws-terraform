@@ -68,7 +68,7 @@ resource "aws_s3_bucket_server_side_encryption_configuration" "backup" {
   }
 }
 
-# S3 Bucket public access block (HIPAA compliance)
+# S3 Bucket public access block
 resource "aws_s3_bucket_public_access_block" "file_repository" {
   bucket = aws_s3_bucket.file_repository.id
 

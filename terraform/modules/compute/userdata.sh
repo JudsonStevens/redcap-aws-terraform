@@ -125,7 +125,7 @@ grep -q '^request_terminate_timeout' /etc/php-fpm.d/www.conf || \
 # Fix PHP session directory ownership (default is root:apache, but PHP-FPM runs as nginx)
 chown -R nginx:nginx /var/lib/php/session
 
-# Mount encrypted volume for logs (HIPAA compliance)
+# Mount encrypted volume for logs
 LOG_DEVICE="/dev/nvme1n1"
 LOG_MOUNT="/var/log/nginx"
 

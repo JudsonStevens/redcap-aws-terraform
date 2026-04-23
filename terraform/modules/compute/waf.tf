@@ -1,4 +1,4 @@
-# AWS WAF v2 Web ACL for ALB (HIPAA compliance)
+# AWS WAF v2 Web ACL for ALB
 #
 # Strategy:
 #   - IP reputation + common rules: BLOCK (low false-positive risk)
@@ -11,7 +11,7 @@
 resource "aws_wafv2_web_acl" "main" {
   name        = "${var.name_prefix}-waf"
   scope       = "REGIONAL"
-  description = "WAF for REDCap ALB - HIPAA compliance"
+  description = "WAF for REDCap ALB"
 
   default_action {
     allow {}

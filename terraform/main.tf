@@ -150,7 +150,7 @@ module "dns" {
   tags = local.common_tags
 }
 
-# Audit — CloudTrail, GuardDuty, AWS Config (HIPAA compliance)
+# Audit — CloudTrail, GuardDuty, AWS Config (supports HIPAA-aligned deployments)
 module "audit" {
   source = "./modules/audit"
 

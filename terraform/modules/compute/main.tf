@@ -209,7 +209,7 @@ resource "aws_s3_bucket_lifecycle_configuration" "alb_logs" {
   }
 }
 
-# Encryption for ALB logs (HIPAA compliance)
+# Encryption for ALB logs
 resource "aws_s3_bucket_server_side_encryption_configuration" "alb_logs" {
   bucket = aws_s3_bucket.alb_logs.id
 
@@ -416,7 +416,7 @@ resource "aws_launch_template" "main" {
     }
   }
 
-  # Additional encrypted volume for logs (HIPAA compliance)
+  # Additional encrypted volume for logs
   block_device_mappings {
     device_name = "/dev/sdf"
     ebs {

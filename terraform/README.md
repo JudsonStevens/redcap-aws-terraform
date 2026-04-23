@@ -1,6 +1,8 @@
 # REDCap on AWS — Terraform
 
-This directory contains the Terraform configuration that deploys a HIPAA-oriented REDCap environment on AWS: ALB + ASG + Aurora MySQL + S3, with Route53/ACM, WAF, CloudTrail, GuardDuty, AWS Config, and CloudWatch.
+This directory contains the Terraform configuration that deploys a REDCap environment on AWS: ALB + ASG + Aurora MySQL + S3, with Route53/ACM, WAF, CloudTrail, GuardDuty, AWS Config, and CloudWatch. It includes AWS controls commonly used in HIPAA-aligned environments.
+
+> **HIPAA compliance is your responsibility, not this template's.** Deploying this Terraform does not make you HIPAA compliant. See the [full disclaimer in the root README](../README.md#hipaa-disclaimer--read-this-first) before using this with Protected Health Information.
 
 ## Prerequisites
 

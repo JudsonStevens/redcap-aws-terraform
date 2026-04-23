@@ -1,6 +1,22 @@
 # REDCap on AWS (Terraform)
 
-Infrastructure as Code for deploying [REDCap](https://projectredcap.org/) (Research Electronic Data Capture) on AWS using Terraform. The stack runs REDCap on an EC2 Auto Scaling Group behind an Application Load Balancer, with Aurora MySQL for the database and S3 for file storage. It is designed with HIPAA controls in mind (encryption in transit and at rest, VPC isolation, CloudTrail, GuardDuty, AWS Config, WAF, and log archival).
+Infrastructure as Code for deploying [REDCap](https://projectredcap.org/) (Research Electronic Data Capture) on AWS using Terraform. The stack runs REDCap on an EC2 Auto Scaling Group behind an Application Load Balancer, with Aurora MySQL for the database and S3 for file storage. It includes AWS controls commonly used in HIPAA-aligned environments (encryption in transit and at rest, VPC isolation, CloudTrail, GuardDuty, AWS Config, WAF, and log archival).
+
+## HIPAA disclaimer — read this first
+
+**Deploying this Terraform does not make you, your organization, or your REDCap installation HIPAA compliant.** HIPAA compliance is an obligation of the covered entity or business associate operating the system — not of an infrastructure template. This repository is provided "AS IS" with no warranty of compliance, fitness for purpose, or security (see [LICENSE](./LICENSE)).
+
+Technical controls in AWS are only one piece of HIPAA. Before placing any Protected Health Information (PHI) on a deployment of this stack, you — not the authors — are responsible for all of the following:
+
+- Executing a **Business Associate Agreement (BAA) with AWS** through AWS Artifact, and confirming every AWS service you actually use is listed under the [AWS HIPAA Eligible Services Reference](https://aws.amazon.com/compliance/hipaa-eligible-services-reference/). The set of eligible services changes over time; this repo's defaults may drift from that list.
+- Completing your own **risk analysis** under 45 CFR §164.308(a)(1)(ii)(A) for the specific workload, data, and threat model.
+- Implementing the **administrative safeguards** HIPAA requires: workforce training, access management, sanction policy, incident response, breach notification procedures, contingency planning, periodic review.
+- Implementing the **physical safeguards** for any endpoints, backups, or workstations that touch PHI.
+- Configuring the **technical safeguards** for your environment correctly — including access control, audit log review, integrity monitoring, encryption key management, and transmission security — and auditing that configuration on an ongoing basis.
+- Signing **downstream BAAs** with any subprocessors (SendGrid, Sentry, or any other third party this stack integrates with).
+- Ongoing **monitoring, logging review, and independent audit** of all of the above.
+
+If your organization handles PHI, do not deploy this in production without involving your compliance, legal, and security teams. Nothing in this repository, its documentation, or any communication from its authors constitutes legal, compliance, or security advice.
 
 ## Looking for the CloudFormation / Elastic Beanstalk version?
 
